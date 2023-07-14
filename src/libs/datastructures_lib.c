@@ -557,27 +557,6 @@ static i_val union_callback(const i_val *args, size_t n_args) {
 	return (i_val) { .type = type_table, .managed = true, .val = { .ptr = res_table } };
 }
 
-LIB_FNS(fns) = {
-	FN("array", array_construct_callback, -1),
-	FN("table", table_construct_callback, -1),
-	
-	FN(";", array_construct_callback, -1),
-	FN("@", table_construct_callback, -1),
-	
-	FN("push:", array_push_callback, 2),
-	FN("pop", array_pop_callback, 1),
-	FN("join:", array_join_callback, 2),
-	FN("peek", array_peek_callback, 1),
-	FN("foreach-in", foreach_callback, 2),
-	FN("map", map_callback, 2),
-	FN("filter", filter_callback, 2),
-	FN("arrayof", arrayof_construct_callback, 2),
-	
-	FN("in?", in_callback, 2),
-	
-	FN("union:", union_callback, 2)
-};
-
 static i_val table_call(void *ptr, const i_val *args, size_t n_args) {
 	if(n_args != 1)
 		return STATIC_ERR("Table can only be indexed with 1 key");
@@ -674,6 +653,27 @@ int datastructures_lib_load() {
 	type_table = beryl_add_type(table_free, table_retain, table_release, table_get_refs, table_call, table_interfaces, LENOF(table_interfaces));
 	if(type_table == TYPE_NULL)
 		return -1;
+	
+	LIB_FNS(fns) = {
+		FN("array", array_construct_callback, -1),
+		FN("table", table_construct_callback, -1),
+		
+		FN(";", array_construct_callback, -1),
+		FN("@", table_construct_callback, -1),
+		
+		FN("push:", array_push_callback, 2),
+		FN("pop", array_pop_callback, 1),
+		FN("join:", array_join_callback, 2),
+		FN("peek", array_peek_callback, 1),
+		FN("foreach-in", foreach_callback, 2),
+		FN("map", map_callback, 2),
+		FN("filter", filter_callback, 2),
+		FN("arrayof", arrayof_construct_callback, 2),
+		
+		FN("in?", in_callback, 2),
+		
+		FN("union:", union_callback, 2)
+	};
 	LOAD_FNS(fns);
 	
 	return 0;

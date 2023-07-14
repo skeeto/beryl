@@ -136,20 +136,19 @@ TRIG_FN(asin)
 TRIG_FN(acos)
 TRIG_FN(atan)
 
-LIB_FNS(fns) = {
-	FN("sqrt", sqrt_callback, 1),
-	FN("^", pow_callback, 2),
-	
-	FN("cos", cos_callback, 1),
-	FN("sin", sin_callback, 1),
-	FN("tan", tan_callback, 1),
-	
-	FN("acos", acos_callback, 1),
-	FN("asin", asin_callback, 1),
-	FN("atan", atan_callback, 1)
-};
-
 void math_lib_load() {
+	LIB_FNS(fns) = {
+		FN("sqrt", sqrt_callback, 1),
+		FN("^", pow_callback, 2),
+		
+		FN("cos", cos_callback, 1),
+		FN("sin", sin_callback, 1),
+		FN("tan", tan_callback, 1),
+		
+		FN("acos", acos_callback, 1),
+		FN("asin", asin_callback, 1),
+		FN("atan", atan_callback, 1)
+	};
 	LOAD_FNS(fns);
 	
 	CONSTANT("pi", i_val_float(3.14159265359));

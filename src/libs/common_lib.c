@@ -399,35 +399,34 @@ static i_val switch_callback(const i_val *args, size_t n_args) {
 		return I_NULL;
 }
 
-LIB_FNS(fns) = {
-	FN("eval", eval_callback, 1),
-	FN("cat+", concat_callback, -1),
-	FN("typeof", typeof_callback, -1),
-	//FN("<-", apply_left_callback, 2),
-	//FN("->", apply_right_callback, 2),
-	FN("apply", apply_callback, 2),
-	//FN("implies?", implies_callback, 2),
-	FN("max", max_callback, -2),
-	FN("min", min_callback, -2),
-	FN("parse-int", parse_int_callback, 1),
-	FN("int->str", int_to_str_callback, 1),
-	FN("rest:", rest_callback, 2),
-	FN("mod:", modulus_callback, 2),
-	FN("null?", null_check_callback, -2),
-	FN("expect", expect_callback, -2),
-	
-	FN("round", round_callback, 1),
-	
-	FN("if?", inline_if_callback, 2),
-	FN("else?", inline_else_callback, 2),
-	
-	FN("intof", integer_of_callback, 1),
-	FN("abs", abs_callback, 1),
-	
-	FN("switch", switch_callback, -2)
-};
-
 void common_lib_load() {
+	LIB_FNS(fns) = {
+		FN("eval", eval_callback, 1),
+		FN("cat+", concat_callback, -1),
+		FN("typeof", typeof_callback, -1),
+		//FN("<-", apply_left_callback, 2),
+		//FN("->", apply_right_callback, 2),
+		FN("apply", apply_callback, 2),
+		//FN("implies?", implies_callback, 2),
+		FN("max", max_callback, -2),
+		FN("min", min_callback, -2),
+		FN("parse-int", parse_int_callback, 1),
+		FN("int->str", int_to_str_callback, 1),
+		FN("rest:", rest_callback, 2),
+		FN("mod:", modulus_callback, 2),
+		FN("null?", null_check_callback, -2),
+		FN("expect", expect_callback, -2),
+		
+		FN("round", round_callback, 1),
+		
+		FN("if?", inline_if_callback, 2),
+		FN("else?", inline_else_callback, 2),
+		
+		FN("intof", integer_of_callback, 1),
+		FN("abs", abs_callback, 1),
+		
+		FN("switch", switch_callback, -2)
+	};
 	LOAD_FNS(fns);
 
 	DEF_FN("load", path,

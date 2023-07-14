@@ -14,8 +14,6 @@ struct library_callback {
 }
 */
 
-#define retain(x) beryl_retain(x)
-#define release(x) beryl_release(x)
 #define call_fn(fn, args, n_args, action) beryl_call_fn(fn, args, n_args, BERYL_ERR_##action)
 #define eval(src, src_len, action) beryl_call_fn(src, src_len, BERYL_ERR_##action)
 

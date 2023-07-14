@@ -1,12 +1,6 @@
 #include "lexer.h"
 #include "utils.h"
 
-#ifdef DEBUG
-	#include <assert.h>
-#else
-	#define assert(x)
-#endif
-
 typedef struct lex_token lex_token;
 
 #define KEYWORD(str, tok) { str, sizeof(str) - 1, tok }

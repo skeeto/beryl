@@ -46,12 +46,6 @@ static i_val capof_callback(const i_val *args, size_t n_args) {
 	return i_val_int(cap);
 }
 
-LIB_FNS(fns) = {
-	FN("refcount", get_refcount_callback, 1),
-	FN("ptrof", ptrof_callback, 1),
-	FN("capof", capof_callback, 1)
-};
-
 #ifdef __unix__
 	#define PLATFORM "unix"
 #endif
@@ -84,6 +78,11 @@ void debug_lib_load() {
 	platform_info[0] = i_val_static_str(PLATFORM, sizeof(PLATFORM) - 1);
 	platform_info[1] = i_val_static_str(ARCH, sizeof(ARCH) - 1);
 		
+    LIB_FNS(fns) = {
+        FN("refcount", get_refcount_callback, 1),
+        FN("ptrof", ptrof_callback, 1),
+        FN("capof", capof_callback, 1)
+    };
 	LOAD_FNS(fns);
 	CONSTANT("ptrsize", i_val_int(sizeof(void *)));
 	//CONSTANT("platform", i_val_static_str(PLATFORM, sizeof(PLATFORM) - 1));

@@ -374,16 +374,15 @@ static i_val split_callback(const i_val *args, size_t n_args) {
 	return res_array;
 }
 
-LIB_FNS(fns) = {
-	FN("lex", tokenize_callback, 2),
-	FN("endswith?", endswith_callback, 2),
-	FN("find", find_callback, 2),
-	FN("substring", substring_callback, 3),
-	FN("replace", replace_callback, 3),
-	FN("split", split_callback, -3)
-};
-
 void string_lib_load() {
+	LIB_FNS(fns) = {
+		FN("lex", tokenize_callback, 2),
+		FN("endswith?", endswith_callback, 2),
+		FN("find", find_callback, 2),
+		FN("substring", substring_callback, 3),
+		FN("replace", replace_callback, 3),
+		FN("split", split_callback, -3)
+	};
 	LOAD_FNS(fns);
 	
 	CONSTANT("newline", I_STATIC_STR("\n"));

@@ -366,43 +366,42 @@ static i_val new_tag_callback(const i_val *args, size_t n_args) {
 	return new_tag;
 }
 
-LIB_FNS(fns) = {
-	FN("if", if_callback, -3),
-	FN("for", for_callback, -4),
-	FN("loop", loop_callback, 1),
-	FN("forevery", forevery_callback, -3),
-	
-	FN("+", add_callback, -3),
-	FN("-", sub_callback, -2),
-	FN("*", mul_callback, -3),
-	FN("/", div_callback, -3),
-
-	FN("==", eq_callback, -3),
-	FN("/=", not_eq_callback, -3),
-	FN("not", not_callback, 1),
-	FN("or?", or_callback, 2),
-	FN("and?", and_callback, 2),
-	FN("<", less_callback, -3),
-	FN(">", greater_callback, -3),
-	FN("<=", less_eq_callback, -3),
-	FN(">=", greater_eq_callback, -3),
-	
-	FN("~=", lenient_eq_callback, -3),
-	
-	FN("assert", assert_callback, -1),
-	
-	FN("try", try_callback, -2),
-	FN("error", error_callback, 1),
-	
-	FN("sizeof", sizeof_callback, 1),
-	
-	FN("invoke", invoke_callback, 1),
-	FN("new", invoke_callback, 1),
-	FN("return", return_callback, -1),
-	FN("tag", new_tag_callback, 0)
-};
-
 void core_lib_load() {
+	LIB_FNS(fns) = {
+		FN("if", if_callback, -3),
+		FN("for", for_callback, -4),
+		FN("loop", loop_callback, 1),
+		FN("forevery", forevery_callback, -3),
+		
+		FN("+", add_callback, -3),
+		FN("-", sub_callback, -2),
+		FN("*", mul_callback, -3),
+		FN("/", div_callback, -3),
+
+		FN("==", eq_callback, -3),
+		FN("/=", not_eq_callback, -3),
+		FN("not", not_callback, 1),
+		FN("or?", or_callback, 2),
+		FN("and?", and_callback, 2),
+		FN("<", less_callback, -3),
+		FN(">", greater_callback, -3),
+		FN("<=", less_eq_callback, -3),
+		FN(">=", greater_eq_callback, -3),
+		
+		FN("~=", lenient_eq_callback, -3),
+		
+		FN("assert", assert_callback, -1),
+		
+		FN("try", try_callback, -2),
+		FN("error", error_callback, 1),
+		
+		FN("sizeof", sizeof_callback, 1),
+		
+		FN("invoke", invoke_callback, 1),
+		FN("new", invoke_callback, 1),
+		FN("return", return_callback, -1),
+		FN("tag", new_tag_callback, 0)
+	};
 	LOAD_FNS(fns);
 	CONSTANT("true", i_val_bool(1));
 	CONSTANT("false", i_val_bool(0));

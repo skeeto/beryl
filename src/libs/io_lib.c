@@ -205,13 +205,6 @@ static i_val write_callback(const struct i_val *args, size_t n_args) {
 	return I_NULL;
 }
 
-LIB_FNS(fns) = {
-	FN("print", print_callback, -1),
-	FN("read", read_callback, 1),
-	FN("readline", readline_callback, -1),
-	FN("write", write_callback, 2)
-};
-
 #ifdef __windows__
 	#define PATH_SEPARATOR "\\"
 #else
@@ -219,6 +212,12 @@ LIB_FNS(fns) = {
 #endif
 
 void io_lib_load() {
+	LIB_FNS(fns) = {
+		FN("print", print_callback, -1),
+		FN("read", read_callback, 1),
+		FN("readline", readline_callback, -1),
+		FN("write", write_callback, 2)
+	};
 	LOAD_FNS(fns);
 	
 	CONSTANT("path-separator", I_STATIC_STR(PATH_SEPARATOR));
